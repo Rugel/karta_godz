@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+    <head>
+        <title>Karta godzin pracy</title>
+        <meta charset="utf-8"/>
+         <meta name="viewport" content="width=device-width, initial-scale=.5" />
+         <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap" rel="stylesheet">
+        <style>
+            body{
+                font-family: 'Inter', sans-serif;
+                font-size:.93em;
+            }
+ #tabela{
+    text-align:center;
+    margin-top:50px;
+    margin-bottom: 60px;
+    max-width:85%;
+    border-collapse: collapse;
+    margin:auto;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+}
+td{
+    border:solid 1px ;
+    padding-left:3px;
+    padding-right:3px;
+}
+
+    
+
+#nag{
+   text-align:center ;
+   margin-left:auto;
+   margin-right:auto;
+   font-weight:600;
+}
+.f1,.nag{
+    text-align:center;
+    font-weight:600;
+
+}    
+input, #druk{font-weight:600
+    outline:none;
+    border-radius: 8px;
+    font-size:20px;
+    background-color:lightgrey;
+    text-align:center;
+    padding:5px;
+} 
+
+.input{
+    width:70px;
+}
+
+.nag{
+    font-size:24px;
+}
+p{
+    line-height:.5em;
+}
+.suncolor{
+    background-color:lightgrey;
+}
+.satcolor{
+background-color:#e5e5e5;
+}
+.light{
+    background-color:ddd;
+}
+.noborder{
+    border:none;
+}
+.bott{
+    padding-bottom:46px;
+    border-bottom:solid 1px;
+    width:28%;
+    float:left;
+    margin-left:15%;
+    text-align:center;
+}
+.right{
+padding-bottom:46px;
+    border-bottom:solid 1px;
+    width:28%;
+    float:right;
+    text-align:center;
+    margin-right:8%;
+}
+
+@media print{
+#druk{
+   display:none;  
+}
+   * {
+   -webkit-print-color-adjust: exact !important;  
+   color-adjust: exact !important;                 
+   }
+     
+}
+        </style>
+    </head>
+<body>
+    <div id="content">
+        <div id="nag">
+            <p class="f1">Budowa S6 Gdynia</p>
+            <p class="nag">KARTA GODZIN PRACY</p>
+        </div>
+        <p class="f1" style="margin-right:47%">PRACOWNIK:</p>
+        <p class="f1" style="margin-right:57%">STANOWISKO:</p>
+    </div>
+    <div id="wybor"><strong><i> Wybierz miesiąc i rok:</i></strong></br> <input id="edit" type="month"/> <input type="button" class="input" value="OK" onclick="gen()"/>
+        
+    </div></br>
+  <table id="tabela">
+            <tr>
+                <td style="width:6%">Lp.</td>
+                <td style="width:18%">Data</td>
+                <td >Rozpoczęcie</td>
+                <td >Zakończenie</td>
+                <td>Ilość godzin</td>
+                <td style="width:13%">Podpis</td>
+                <td style="width:14%">UWAGI</td>
+            </tr>
+   </table></br></br></br></br>
+   <div class="bott">POTWIERDZENIE</div><div class='right'>DYREKTOR KONTRAKTU</div><div style="clear:both"></div>
+ <script>
+    
+    function gen()
+{
+  
+const text=document.getElementById("edit").value; 
+
+const year=text.slice(0,4)*1;
+
+const month=text.slice(5,7)*1;
+
+const data = new Date();
+let rok=data.getFullYear();
+const m=month+((year-rok)*12);
+rok=year;
+
+let miesiac = (data.setMonth(m-1));
+const dzen=data.setDate(1);
+
+ miesiac=data.getMonth();
+ let nummie=miesiac+1;
+ if(nummie<10){
+     nummie='0'+nummie;
+ }
+const day=data.getDay();
+ const sobota=7-day;
+ const niedziela=1-day;
+
+switch(miesiac){
+    case 0 : miesiac="styczeń";
+ break;
+ 
+    case 1 : miesiac="luty";
+ break;
+ 
+ case 2 : miesiac="marzec";
+ break;
+ 
+ case 3 : miesiac="kwiecień";
+ break;
+ 
+ case 4 : miesiac="maj";
+ break;
+ 
+ case 5 : miesiac="czerwiec";
+ break;
+ 
+ case 6 : miesiac="lipiec";
+ break;
+ 
+ case 7 : miesiac="sierpień";
+ break;
+ 
+ case 8 : miesiac="wrzesień";
+ break;
+ 
+ case 9 : miesiac="październik";
+ break;
+ 
+ case 10 : miesiac="listopad";
+ break;
+ 
+ default : miesiac="grudzień";
+
+
+ };
+ 
+ 
+
+
+document .getElementById ("wybor").innerHTML ="";
+document.getElementById("nag").innerHTML+="<p class='f1'>"+rok+"    "+miesiac+"</p>"+"<button id='druk' onclick=window.print()>🖨️ Drukuj</>";
+if(miesiac=="luty"&&rok%400==0){
+    l=29
+}
+
+else if(miesiac=="luty"&&rok%100==0){
+    l=28
+}
+
+else if(miesiac=="luty"&&rok%4==0){
+    l=29
+}
+else if(miesiac=="luty"&&rok%4!=0){
+    l=28
+}
+ 
+ else if(miesiac =="styczeń"||miesiac=="marzec"||miesiac=="maj"||miesiac=="lipiec"||miesiac=="sierpień"||miesiac=="październik"||miesiac=="grudzień"){
+    l=31
+}
+ else{
+     l=30
+ }
+
+for(i=1; i<=l; i++){
+ 
+       if(i==niedziela||i==niedziela+7||i==niedziela+14||i==niedziela+21||i==niedziela+28||i==niedziela+35||i==1&&(miesiac=="styczeń"||miesiac=="maj"||miesiac=="listopad")||i==6&&miesiac=="styczeń"||i==3&&miesiac=="maj"||i==15&&miesiac=="sierpień"||i==11&&miesiac=="listopad"||i==25&&miesiac=="grudzień"||i==26&&miesiac=="grudzień") {
+        document.getElementById("tabela").innerHTML +="<tr class='suncolor'><td >"+i+"."+"</td><td >"+i+"."+nummie+"."+rok+"</td><td ></td><td > </td><td ></td><td > </td><td > </td></tr>"
+    }    
+    
+       
+  else if(i==sobota||i==sobota+7||i==sobota+14||i==sobota+21||i==sobota+28){
+        document.getElementById("tabela").innerHTML +="<tr class='satcolor'><td style='width:5%'>"+i+"."+"</td><td >"+i+"."+nummie+"."+rok+"</td><td ></td><td ></td><td ></td><td > </td><td > </td></tr>"
+    }                                                                                                    
+    
+    else{
+        document.getElementById("tabela").innerHTML +="<tr><td>"+i+"."+"</td><td>"+i+"."+nummie+"."+rok+"</td><td></td><td></td><td></td><td > </td><td > </td></tr>"
+        }
+    
+     }
+     document.getElementById("tabela").innerHTML +="<tr><td class='noborder'></td><td class='noborder'></td><td class='noborder'></td><td class='noborder'>"+"RAZEM"+"</td><td ></td><td class='noborder'></td><td class='noborder'></td></tr>"
+  }   
+  </script>    
+        
+ </body>
+</html>
