@@ -13,7 +13,7 @@
 <body>
     <div id="content">
         <div id="nag">
-            <p class="f1">Budowa S6 Gdynia</p>
+            <p id="f1"><input id="build" class="f1" value="Budowa S6 Gdynia"></input></p>
             <p class="nag">KARTA GODZIN PRACY</p>
         </div>
         <p class="f1" style="margin-right:47%">PRACOWNIK:</p>
@@ -38,7 +38,8 @@
     
     function gen()
 {
-  
+const build=document.getElementById('build').value; 
+
 const text=document.getElementById("edit").value; 
 
 const year=text.slice(0,4)*1;
@@ -103,7 +104,7 @@ switch(miesiac){
  
  
 
-
+document.getElementById('f1').innerHTML=build;
 document .getElementById ("wybor").innerHTML ="";
 document.getElementById("nag").innerHTML+="<p class='f1'>"+rok+"    "+miesiac+"</p>"+"<button id='druk' onclick=window.print()>🖨️ Drukuj</>";
 if(miesiac=="luty"&&rok%400==0){
