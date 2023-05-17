@@ -1,6 +1,6 @@
 body{
     font-family: 'Inter', sans-serif;
-    font-size:.9em;
+    font-size:.92em;
 }
 #tabela{
 text-align:center;
@@ -36,6 +36,7 @@ font-weight:600;
 .f1{
     padding-top: 18px;
     font-weight: 600;
+    font-size: 12px;
 }
 input, #druk{
 font-weight:600;
