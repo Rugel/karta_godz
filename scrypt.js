@@ -68,7 +68,7 @@ switch(miesiac){
 
 document.getElementById('f1').innerHTML=build;
 document .getElementById ("wybor").innerHTML ="";
-document.getElementById("nag").innerHTML+="<p class='f1'>"+rok+"    "+miesiac+"</p>"+"<button id='druk' onclick=window.print()>🖨️ Drukuj</>";
+document.getElementById("nag").innerHTML+="<p>"+rok+"    "+miesiac+"</p>"+"<button id='druk' onclick=window.print()>🖨️ Drukuj</>";
 if(miesiac=="luty"&&rok%400==0){
     l=29
 }
@@ -107,5 +107,6 @@ for(i=1; i<=l; i++){
         }
     
      }
-     document.getElementById("tabela").innerHTML +="<tr><td class='noborder'></td><td class='noborder'></td><td class='noborder'></td><td class='noborder'>"+"RAZEM"+"</td><td ></td><td class='noborder'></td><td class='noborder'></td></tr>"
+     document.getElementById("tabela").innerHTML +="<tr><td class='noborder'></td><td class='noborder'></td><td class='noborder'></td><td class='noborder'>"+"RAZEM"+"</td><td ></td><td class='noborder'></td><td class='noborder'></td></tr>";
+     document.title=`${miesiac}_${rok}_kartaGP`;
   }

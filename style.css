@@ -1,6 +1,6 @@
 body{
     font-family: 'Inter', sans-serif;
-    font-size:.92em;
+    font-size:.9em;
 }
 #tabela{
 text-align:center;
@@ -28,11 +28,15 @@ margin-left:auto;
 margin-right:auto;
 font-weight:600;
 }
-.f1,.nag{
+.nag{
 text-align:center;
 font-weight:600;
-
 }    
+
+.f1{
+    padding-top: 18px;
+    font-weight: 600;
+}
 input, #druk{
 font-weight:600;
 outline:none;
@@ -54,10 +58,10 @@ p{
 line-height:.5em;
 }
 .suncolor{
-background-color:lightgrey;
+background-color:#999999;
 }
 .satcolor{
-background-color:#e5e5e5;
+background-color:#bbbbbb;
 }
 .light{
 background-color:ddd;
@@ -70,7 +74,7 @@ padding-bottom:46px;
 border-bottom:solid 1px;
 width:28%;
 float:left;
-margin-left:15%;
+margin-left:9%;
 text-align:center;
 }
 .right{
